@@ -10,6 +10,8 @@ var PORT = process.env.PORT || 3000;
 app.use(express.urlencoded({ extended: true }));
 app.use(express.json());
 
+var waitlist = []
+
 var tables = [
     {
         name: "Testy McTestson",
@@ -31,13 +33,21 @@ app.get("/api/tables", function(req, res) {
     return res.json(tables);
 });
 
+app.get("/api/waitlist", function(req, res) {
+    return res.json(waitlist);
+});
+
 app.post("/api/tables", function(req, res) {
   
     var newreserve = req.body;
   
-    newreserve.id = tables.length+1
     console.log(newreserve);
-    tables.push(newreserve);
+    if(tables.length>4){
+        waitlist.push(newreserve)
+    }
+    else{
+        tables.push(newreserve);
+    }
     res.json(newreserve);
   });
 
