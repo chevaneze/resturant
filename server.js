@@ -14,7 +14,7 @@ var tables = [
     {
         name: "Testy McTestson",
         phone: 5555555555,
-        email: "thisisatest@TextTrackList.test",
+        email: "thisisatest@test.test",
         id: 1
     }
 ]
