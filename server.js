@@ -10,16 +10,25 @@ var PORT = process.env.PORT || 3000;
 app.use(express.urlencoded({ extended: true }));
 app.use(express.json());
 
+var tables = [
+    {
+        name: "Testy McTestson",
+        phone: 5555555555,
+        email: "thisisatest@TextTrackList.test",
+        id: 0
+    }
+]
+
 app.get("/", function(req, res) {
-    //res.sendFile(path.join(__dirname, "view.html"));
+    res.sendFile(path.join(__dirname, "home.html"));
 });
   
 app.get("/reserve", function(req, res) {
-    //res.sendFile(path.join(__dirname, "add.html"));
+    res.sendFile(path.join(__dirname, "reserve.html"));
 });
 
 app.get("/api/tables", function(req, res) {
-    //return res.json(tables);
+    return res.json(tables);
 });
 
 app.listen(PORT, function() {
